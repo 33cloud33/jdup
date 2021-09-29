@@ -19,10 +19,9 @@ public class Visitor {
         return ignore.contains(dir.getFileName().toString()) ? FileVisitResult.SKIP_SIBLINGS : CONTINUE;
       }
 
-      // TODO: Fix the recursion problem, when the file is a directory the children are never visited
       @Override
       public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        if(!Files.isDirectory(file)) files.add(file);
+        files.add(file);
         return CONTINUE;
       }
 
